@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audioplayers.dart';
-
-// void main() => runApp(XylophoneApp());
 
 void main() {
   return runApp(
@@ -16,26 +13,25 @@ void main() {
           ),
           backgroundColor: Colors.grey[300],
         ),
-        body: XylophoneApp(),
+        body: _XylophoneApp(),
       ),
     ),
   );
 }
 
-class XylophoneApp extends StatelessWidget {
-  void playSounds(int soundNumber) {
-    final player = AudioCache(prefix: 'assets/songs/');
-    player.play('note$soundNumber.wav');
+class _XylophoneApp extends StatelessWidget {
+  final _player = AudioCache(prefix: 'assets/songs/');
+
+  void _playSounds(int _soundNumber) {
+    _player.play('note$_soundNumber.wav');
   }
 
-  Expanded createLine(Color color, int soundNumber) {
+  Expanded _createLine(Color color, int _soundNumber) {
     return Expanded(
       child: TextButton(
-        child: (Text('')),
+        child: Text(''),
         style: TextButton.styleFrom(backgroundColor: color),
-        onPressed: () {
-          playSounds(soundNumber);
-        },
+        onPressed: () => _playSounds(_soundNumber),
       ),
     );
   }
@@ -45,13 +41,13 @@ class XylophoneApp extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        createLine(Colors.red, 1),
-        createLine(Colors.orange, 2),
-        createLine(Colors.yellow, 3),
-        createLine(Colors.green, 4),
-        createLine(Colors.teal, 5),
-        createLine(Colors.blue, 6),
-        createLine(Colors.purple, 7),
+        _createLine(Colors.red, 1),
+        _createLine(Colors.orange, 2),
+        _createLine(Colors.yellow, 3),
+        _createLine(Colors.green, 4),
+        _createLine(Colors.teal, 5),
+        _createLine(Colors.blue, 6),
+        _createLine(Colors.purple, 7),
       ],
     );
   }
